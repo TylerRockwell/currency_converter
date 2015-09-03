@@ -16,5 +16,5 @@ puts money1 == money2
 
 puts money1 * 4.05
 
-money3 = converter.convert(money1, :USD)
+money3 = converter.convert(money1, :JPY)
 puts "#{money1.amount} #{money1.c_code} is equal to #{money3.amount} #{money3.c_code}"
