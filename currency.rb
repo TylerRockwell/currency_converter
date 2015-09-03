@@ -1,4 +1,4 @@
-require './DifferentCurrencyCodeError'
+require './custom_errors'
 
 #Define required methods
 def is_a_number(input)
@@ -49,7 +49,7 @@ class Currency
 
   def +(money)
     #Overrides normal addition to add object amounts
-    @c_code == money.c_code ? @amount + money.amount :  (raise DifferentCurrencyCodeError)
+    @c_code == money.c_code ? @amount + money.amount :  (raise CustomError::DifferentCurrencyCodeError)
   end
 
   def ==(money)
@@ -59,7 +59,7 @@ class Currency
 
   def -(money)
     #Overrides normal subtraction to subtract object amounts
-    @c_code == money.c_code ? @amount - money.amount :  (raise DifferentCurrencyCodeError)
+    @c_code == money.c_code ? @amount - money.amount :  (raise CustomError::DifferentCurrencyCodeError)
   end
 
   def *(number)

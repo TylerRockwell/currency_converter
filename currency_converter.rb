@@ -1,4 +1,3 @@
-'require Currency'
 class Currency_Converter
 
   def initialize
@@ -6,7 +5,7 @@ class Currency_Converter
   end
 
   def convert(currency, currency_type)
-    multiplier = @rates[currency_type]/@rates[currency.c_code]
+    @rates[currency_type] && @rates[currency.c_code] ? (multiplier = @rates[currency_type]/@rates[currency.c_code]) : (raise CustomError::UnknownCurrencyCodeError)
     Currency.new(currency.amount * multiplier, currency_type)
   end
 
