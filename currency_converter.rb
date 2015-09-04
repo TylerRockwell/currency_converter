@@ -1,7 +1,7 @@
 class Currency_Converter
 
-  def initialize
-    @rates = {USD: 1.0, EUR: 0.74, JPY: 120.0}
+  def initialize (rates)
+    @rates = rates
   end
 
   def convert(currency, currency_type)

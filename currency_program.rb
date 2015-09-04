@@ -1,9 +1,9 @@
 require './currency'
 require './currency_converter'
 
-money1 = Currency.new(10, :AAA)
+money1 = Currency.new(10, :USD)
 money2 = Currency.new("$10")
-converter = Currency_Converter.new
+converter = Currency_Converter.new({USD: 1.0, EUR: 0.74, JPY: 120.0})
 
 
 puts money1.amount
