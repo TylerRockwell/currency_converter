@@ -46,11 +46,11 @@ class Currency
         terminate("Invalid currency type entered")
       end
       #Validates that amount is a number
-      @amount = amount.to_f if is_a_number(amount)
+      @amount = amount.to_f.round(2) if is_a_number(amount)
       @c_code = get_currency_type(symbol)
     else
       #Checks that amount is a number and assigns initial instance variables
-      is_a_number(amount) ? @amount = amount.to_f : terminate("Amount is not a number. Terminating...")
+      is_a_number(amount) ? @amount = amount.to_f.round : terminate("Amount is not a number. Terminating...")
       @c_code = c_code
     end
   end

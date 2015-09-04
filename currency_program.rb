@@ -1,16 +1,17 @@
 require './currency'
 require './currency_converter'
+require './currency_trader'
+
 
 money1 = Currency.new("10", :USD)
 money2 = Currency.new("10 $")
 converter = Currency_Converter.new({USD: 1.0, EUR: 0.898, JPY: 119.863})
 
-
-puts money1.amount
+puts "#{format('%.02f', money1.amount)} #{money1.c_code}"
 puts money2.amount
 
-#puts money1 + money2
-#puts money1 - money2
+puts money1 + money2
+puts money1 - money2
 
 puts money1 == money2
 
@@ -30,3 +31,9 @@ else
 end
 
 puts "#{money4.amount} #{money4.c_code}"
+
+old_value = Currency_Converter.new({USD: 1, EUR: 0.767, GBP: 0.642, AUD: 1.353, CAD: 1.355, JPY: 102.162})
+present_value = Currency_Converter.new({USD: 1, EUR: 0.898, GBP: 0.656, AUD: 1.433, CAD: 1.322, JPY:119.863})
+
+trader = Currency_Trader.new(old_value, present_value, :USD)
+trader.find_best_investment

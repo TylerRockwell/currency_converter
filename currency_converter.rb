@@ -1,5 +1,5 @@
 class Currency_Converter
-
+  attr_reader :rates
   def initialize (rates)
     @rates = rates
   end
