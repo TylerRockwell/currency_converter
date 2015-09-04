@@ -9,7 +9,7 @@ end
 
 #### TEST CODE #####
 money1 = Currency.new("10", :USD)
-money2 = Currency.new("10 $")
+money2 = Currency.new("$10")
 converter = Currency_Converter.new({USD: 1.0, EUR: 0.898, JPY: 119.863})
 
 puts format_output(money1.amount, money1.c_code)
@@ -45,5 +45,5 @@ hash_array = [old_value, present_value]
 #trader.find_best_investment
 
 trader = Currency_Trader.new(hash_array, :USD)
-trader.output
+#trader.output
 trader.find_best_investment
