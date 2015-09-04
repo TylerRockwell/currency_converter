@@ -24,7 +24,7 @@ puts format_output(money1 * 4.05, money1.c_code)
 
 money3 = converter.convert(money1, :EUR)
 puts "#{format_output(money1.amount, money1.c_code)} is equal to #{format_output(money3.amount, money3.c_code)}"
-
+=begin
 puts "Please enter the amount of money you'd like to convert and its symbol ($x or x USD)"
 input = gets.chomp
 if input.include?(" ")
@@ -36,9 +36,14 @@ else
 end
 
 puts "#{format_output(money4.amount, money4.c_code)}"
-
+=end
 old_value = Currency_Converter.new({USD: 1, EUR: 0.767, GBP: 0.642, AUD: 1.353, CAD: 1.355, JPY: 102.162})
 present_value = Currency_Converter.new({USD: 1, EUR: 0.898, GBP: 0.656, AUD: 1.433, CAD: 1.322, JPY:119.863})
 
-trader = Currency_Trader.new(old_value, present_value, :USD)
+hash_array = [old_value, present_value]
+#trader = Currency_Trader.new(old_value, present_value, :USD)
+#trader.find_best_investment
+
+trader = Currency_Trader.new(hash_array, :USD)
+trader.output
 trader.find_best_investment
