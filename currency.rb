@@ -32,17 +32,25 @@ class Currency
   attr_reader :amount, :c_code
 
   def initialize (amount, c_code="")
+    amount = amount.delete(" ") if !is_a_number(amount)
     #Checks format of input
     if c_code == ""
       #Removes currency symbol and determines currency code
-      symbol = amount[0]
-      amount[0] = ''
+      if !is_a_number(amount[0])
+        symbol = amount[0]
+        amount[0] = ''
+      elsif !is_a_number(amount[-1])
+        symbol = amount[-1]
+        amount[-1] = ''
+      else
+        terminate("Invalid currency type entered")
+      end
       #Validates that amount is a number
       @amount = amount.to_f if is_a_number(amount)
       @c_code = get_currency_type(symbol)
     else
       #Checks that amount is a number and assigns initial instance variables
-      is_a_number(amount) ? @amount = amount : terminate("Amount is not a number. Terminating...")
+      is_a_number(amount) ? @amount = amount.to_f : terminate("Amount is not a number. Terminating...")
       @c_code = c_code
     end
   end
