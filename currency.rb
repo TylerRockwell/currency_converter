@@ -21,7 +21,7 @@ def get_currency_type(symbol)
   when "€"
     :EUR
   when "¥"
-    :EUR
+    :JPY
   else
     terminate("Symbol not recognized. Terminating...")
   end
@@ -41,8 +41,6 @@ class Currency
         symbol = amount[0]
         amount[0] = ''
         c_code = get_currency_type(symbol)
-      else
-        terminate("Invalid currency type entered")
       end
     end
     #Set instance variables
